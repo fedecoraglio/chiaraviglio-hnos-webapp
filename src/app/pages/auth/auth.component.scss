@@ -1,0 +1,76 @@
+:host /deep/ {
+  $auth-layout-padding: 2.5rem;
+
+  nb-layout .layout .layout-container .content .columns nb-layout-column {
+    padding: $auth-layout-padding;
+  }
+
+  nb-layout .layout nb-layout-header nav.fixed {
+    background: transparent;
+  }
+
+  nb-layout-header {
+    background-color: #1c8599;
+  }
+
+  nb-card {
+    height: calc(100vh - 2 * #{$auth-layout-padding});
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  .form-group.accept-group {
+    margin: 2rem 0;
+    display: flex;
+  }
+
+  .sub-title {
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  .links {
+    text-align: center;
+    margin-top: 1.7rem;
+  }
+
+  form label {
+    font-weight: bold;
+  }
+
+  nb-card {
+    margin: 0;
+    height: auto;
+    .auth-header {
+      background-color: #374158;
+      font-weight: bold;
+      h2 {
+        color: white;
+      }
+      padding: 3em 1rem;
+    }
+    .auth-body {
+      small {
+        text-align: start;
+      }
+    }
+  }
+  .flex-centered {
+      margin: auto;
+  }
+
+  // TODO rewrite when develop responsive
+  @media (max-width: 550px) {
+    /deep/ nb-layout .layout .layout-container .content .columns nb-layout-column {
+      padding: 0;
+    }
+
+    nb-card {
+      border-radius: 0;
+      height: 100vh;
+    }
+  }
+
+}

@@ -1,0 +1,187 @@
+<!-- Principal form -->
+<toaster-container [toasterconfig]="config"></toaster-container>
+<nb-card>
+  <nb-card-header>
+    <h2 class="title">{{'auth.register.titleRegisterByEmail' | translate}}</h2>
+  </nb-card-header>
+  <nb-card-body>      
+    <div class="row p-4">
+      <form (ngSubmit)="register()" #form="ngForm" class="w-100">
+        <div class="form-group">
+          <label for="name">{{'auth.register.form.name' | translate}}*</label>
+          <input name="name"
+                 id="name" 
+                 [(ngModel)]="user.name"
+                 #name="ngModel"
+                 type="text"
+                 class="form-control"
+                 placeholder="{{'auth.register.form.name' | translate}}"
+                 [class.form-control-danger]="name.invalid && name.touched"
+                 [required]="true"
+                 [minlength]="2"
+                 [maxlength]="200"
+                 maxlength="200" autofocus>
+          <small class="form-text error" 
+                 *ngIf="name.invalid && name.touched && name.errors?.required">
+            {{'auth.register.errors.nameRequired' | translate}}
+          </small>
+          <small class="form-text error"
+                 *ngIf="name.invalid && name.touched && (name.errors?.minlength || name.errors?.maxlength)">
+            {{'auth.register.errors.nameMinlength' | translate}}
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label for="idNumber">{{'auth.register.form.idNumber' | translate}}*</label>
+          <input name="idNumber"
+                  id="idNumber" 
+                  [(ngModel)]="user.idNumber"
+                  #idNumber="ngModel"
+                  type="number"
+                  class="form-control"
+                  placeholder="{{'auth.register.form.idNumber' | translate}}"
+                  [class.form-control-danger]="idNumber.invalid && idNumber.touched"
+                  [required]="true"
+                  [minlength]="1"
+                  [maxlength]="200"
+                  maxlength="200" autofocus>
+          <small class="form-text error" 
+                  *ngIf="idNumber.invalid && idNumber.touched && idNumber.errors?.required">
+            {{'auth.register.errors.idNumberRequired' | translate}}
+          </small>
+          <small class="form-text error"
+                  *ngIf="idNumber.invalid && idNumber.touched && (idNumber.errors?.minlength || idNumber.errors?.maxlength)">
+            {{'auth.register.errors.nameMinlength' | translate}}
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label for="email">{{'auth.register.form.email' | translate}}*</label>
+          <input name="email"
+                 id="email"
+                 [(ngModel)]="user.email"
+                 #email="ngModel"
+                 type="email"
+                 class="form-control"
+                 placeholder="{{'auth.register.form.email' | translate}}"
+                 pattern=".+@.+\..+"
+                 [class.form-control-danger]="email.invalid && email.touched"
+                 [required]="true">
+          <small class="form-text error" *ngIf="email.invalid && email.touched && email.errors?.required">
+            {{'auth.register.errors.emailRequired' | translate}}
+          </small>
+          <small class="form-text error" *ngIf="email.invalid && email.touched && email.errors?.pattern">
+            {{'auth.register.errors.emailInvalid' | translate}}
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmEmail">{{'auth.register.form.repeatEmail' | translate}}*</label>
+          <input name="confirmEmail"
+                 id="confirmEmail"
+                 [(ngModel)]="user.confirmEmail"
+                 #confirmEmail="ngModel"
+                 type="email"
+                 class="form-control"
+                 placeholder="{{'auth.register.form.repeatEmail' | translate}}"
+                 pattern=".+@.+\..+"
+                 [class.form-control-danger]="confirmEmail.invalid && confirmEmail.touched"
+                 [required]="true">
+          <small class="form-text error" *ngIf="confirmEmail.invalid && confirmEmail.touched && confirmEmail.errors?.required">
+            {{'auth.register.errors.repeatEmailRequired' | translate}}
+          </small>
+          <small class="form-text error"
+                 *ngIf="confirmEmail.invalid && confirmEmail.touched && confirmEmail.errors?.pattern">
+            {{'auth.register.errors.repeatEmailInvalid' | translate}}
+          </small>
+          <small class="form-text error"
+                 *ngIf="confirmEmail.touched && email.value != confirmEmail.value && !confirmEmail.errors?.required">
+            {{'auth.register.errors.emailsAreNotEquals' | translate}}
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label for="password">{{'auth.register.form.password' | translate}}*</label>
+          <input name="password"
+                 id="password"
+                 [(ngModel)]="user.password"
+                 type="password"
+                 class="form-control"
+                 placeholder="{{'auth.register.form.password' | translate}}"
+                 #password="ngModel"
+                 [class.form-control-danger]="password.invalid && password.touched"
+                 [required]="true"
+                 [minlength]="8"
+                 [maxlength]="200"
+                 maxlength="200"
+                 pattern="(?=.*\d)(?=.*[a-zA-Z]).{8,}">
+          <small class="form-text error" *ngIf="password.invalid && password.touched && password.errors?.required">
+            {{'auth.register.errors.passwordRequired' | translate}}
+          </small>
+          <small class="form-text error"
+                 *ngIf="password.invalid && password.touched &&
+                    (password.errors?.minlength || password.errors?.maxlength)">
+            {{'auth.register.errors.passwordMinlength' | translate}}
+          </small>
+          <small class="form-text error" *ngIf="password.invalid && password.touched && password.errors?.pattern">
+            {{'auth.register.errors.passwordInvalid' | translate}}
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">{{'auth.register.form.repeatPassword' | translate}}*</label>
+          <input name="confirmPassword" 
+                 id="confirmPassword"
+                 #confirmPassword="ngModel"
+                 [(ngModel)]="user.confirmPassword"
+                 type="password"
+                 class="form-control" 
+                 placeholder="{{'auth.register.form.repeatPassword' | translate}}"
+                 [class.form-control-danger]="confirmPassword.invalid && confirmPassword.touched"
+                 [required]="true"
+                 [minlength]="8"
+                 [maxlength]="200"
+                 maxlength="200"
+                 pattern="(?=.*\d)(?=.*[a-zA-Z]).{8,}">
+          <small class="form-text error" 
+                 *ngIf="confirmPassword.invalid && confirmPassword.touched && confirmPassword.errors?.required">
+            {{'auth.register.errors.repeatPasswordRequired' | translate}}
+          </small>
+          <small class="form-text error"
+                 *ngIf="confirmPassword.invalid && confirmPassword.touched && (confirmPassword.errors?.minlength || confirmPassword.errors?.maxlength)">
+            {{'auth.register.errors.repeatPasswordMinlength' | translate}}
+          </small>
+          <small class="form-text error"
+                 *ngIf="confirmPassword.touched && password.value != confirmPassword.value && !confirmPassword.errors?.required">
+            {{'auth.register.errors.passwordsAreNotEquals' | translate}}
+          </small>
+          <small class="form-text error" *ngIf="confirmPassword.invalid && confirmPassword.touched && confirmPassword.errors?.pattern">
+            {{'auth.register.errors.repeatPasswordInvalid' | translate}}
+          </small>
+        </div>
+
+        <div class="form-group">
+          <button [disabled]="submitted || !form.valid"
+                  class="btn btn-block btn-success"
+                  [class.btn-pulse]="submitted"
+                  type="submit">
+            {{'auth.register.form.submit' | translate}}
+          </button>
+        </div>
+
+        <div *ngIf="errors && errors.length > 0 && !submitted" class="alert alert-danger" role="alert">
+          <div>{{errors}}</div>
+        </div>
+
+        <div class="links">
+          <small class="form-text">
+            {{'auth.register.doYouHaveAnAccount' | translate}}
+            <a routerLink="/auth/login">
+              <strong>{{'auth.register.login' | translate}}</strong>
+            </a>
+          </small>
+        </div>
+      </form>
+    </div>
+  </nb-card-body>
+</nb-card>

@@ -1,0 +1,21 @@
+<div class="header-container"
+     [class.left]="position === 'normal'"
+     [class.right]="position === 'inverse'">
+  <div class="logo-containter">
+    <div class="logo" (click)="goToHome()">
+      <img width="200" height="65" class="img-responsive" src="assets/images/logo.png">
+    </div>
+  </div>
+</div>
+
+<nb-actions size="medium"
+            class="header-container"
+            [class.right]="position === 'normal'"
+            [class.left]="position === 'inverse'">
+  <nb-action>
+    <a class="menu-links" routerLink="/auth/login">INICIAR SESIÓN</a>
+  </nb-action>
+  <nb-action>
+    <a class="menu-links" routerLink="/auth/register">REGISTRATE</a>
+  </nb-action>
+</nb-actions>

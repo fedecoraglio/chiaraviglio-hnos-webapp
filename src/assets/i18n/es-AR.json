@@ -1,0 +1,121 @@
+{
+  "auth": {    
+    "login" : {
+      "title": "Iniciar Sesión",
+      "dataNotValid": "Por favor verifique todos los campos requeridos",
+      "form": {
+        "emailAddress": "Correo Electrónico",
+        "password": "Contraseña",
+        "savePassword": "Recordar Contraseña",
+        "forgotPassword": "Me olvidé la contraseña",
+        "submit": "CONTINUAR"
+      },
+      "errors": {
+        "emailRequired": "Ingrese el correo electrónico",
+        "emailInvalid": "El correo electrónico no es valido",
+        "passwordRequired": "Ingrese la contraseña"
+      },
+      "registerPrefix": "¿No tienes un usuario?",
+      "registerSuffix": "Crear Cuenta"
+    },
+    "requestPassword": {
+      "title": "Recuperar contraseña",
+      "subtitle": "Ingresa la dirección de correo electrónico asociada a tu cuenta y te enviaremos un enlace para que puedas cambiar tu contraseña.",
+      "messageSuccessfully": "Revisá tu casilla de email y seguí las instrucciones para cambiar tu contraseña. En caso de no recibirlo, revisá la carpeta spam o contactanos a soporte@tuacceso.com.ar",
+      "email": "Correo electrónico",
+      "emailRequired": "Ingresá el correo electrónico",
+      "emailInvalid": "El correo electrónico no es valido",
+      "buttonText": "Enviar Enlace",
+      "repeatPassword": "Confirmá la contraseña",
+      "newPassword": "Nueva Contraseña"
+    },
+    "register" : {      
+      "doYouHaveAnAccount": "¿Ya tenés una cuenta en Chiaraviglio hnos?",
+      "login": "Iniciar Sesión",      
+      "titleRegisterByEmail": "Registrarse con correo electrónico",
+      "backButton": "Volver a registarte",
+      "form": {
+        "name": "Nombre del responsable o de la empresa",
+        "idNumber": "CUIT",
+        "email": "Correo Electrónico",
+        "repeatEmail": "Repetir Correo Electrónico",
+        "password": "Contraseña",
+        "repeatPassword": "Repetir Contraseña",
+        "submit": "COMENZAR"
+      },
+      "errors": {
+        "idNumberRequired": "Ingrese el cuit",
+        "nameRequired": "Ingrese el nombre",
+        "nameMinlength": "El nombre debe tener al menos 2 caracteres",
+        "lastNameRequired": "Ingrese el apellido",
+        "lastNameMinlength": "El apellido debe tener al menos 2 caracteres",
+        "emailRequired": "Ingrese el correo electrónico",
+        "emailInvalid": "El correo electrónico no es valido",
+        "repeatEmailRequired": "Repita el correo electrónico",
+        "repeatEmailInvalid": "El correo electrónico no es valido",
+        "emailsAreNotEquals": "Los correos electrónicos no son iguales",
+        "passwordRequired": "Ingrese la contraseña",
+        "passwordMinlength": "La contraseña no debe tener menos de 8 caracateres",
+        "passwordInvalid": "La contraseña tiene que tener al menos un número y una letra",
+        "repeatPasswordInvalid": "La contraseña tiene que tener al menos un número y una letra",
+        "repeatPasswordRequired": "Ingrese la contraseña",
+        "repeatPasswordMinlength": "La contraseña no debe tener menos de 8 caracateres",
+        "passwordsAreNotEquals": " Las contraseñas no son iguales",
+        "dataNotValid": "Por favor verifique todos los campos requeridos"
+      }
+    }
+  },
+  "currentAccount": {
+    "title": "Movimientos en cuenta corriente"
+  },
+  "grainAccount": {
+    "title": "Movimientos de Granos"
+  },
+  "user": {
+    "titleUpdate": "Actualizar datos del usuario",
+    "btnUpdate": "Actualizar",
+    "updateSuccessfully": "Los datos se actualizaron con exito",
+    "titleResetPwd": "Cambiar Contraseña",
+    "resetPasswordSuccessfully": "La contraseña se modifico con exito",
+    "dataNotValid": "Por favor verifique todos los campos requeridos",
+    "currentPassword": "Ingrese la contraseña actual",
+    "newPassword": "Ingrese la nueva contraseña",
+    "repeatNewPassword": "Repita la nueva contraseña",
+    "requestPasswordTitle": "Recuperar contraseña",
+    "requestPasswordSuccessfully": "La contraseña se envio con exito. Por favor verifique su correo",
+    "requestPasswordSubtitle": "Ingresa la dirección de correo electrónico asociada a tu cuenta y recibirás tu nueva contraseña.",
+    "requestPasswordEmailField": "Ingrese el email",
+    "requestPasswordButtonText": "Enviar contraseña",
+    "emailRequired": "Ingrese el correo electrónico",
+    "emailInvalid": "El correo electrónico no es valido",
+    "passwordRequired": "Ingrese la contraseña"
+  },
+  "apiError": {
+    "1": "Ingrese el nombre",
+    "2": "Ingrese el email",
+    "3": "Ingrese la password",
+    "4": "Ingrese el cuit",
+    "5": "Error al guardar el usuario",
+    "6": "El email ya pertenece a un usuario",
+    "7": "Error al intentar obtener los datos de un usuario",
+    "8": "Error al intentar actualizar los datos de un usuario",    
+    "9": "Error al intentar obtener los datos de un usuario",
+    "10": "Usuario no valido. Verifique los datos",
+    "11": "Error al intentar obtener los datos de un usuario",
+    "12": "La operación para este usuario no esta permitida",
+    "13": "Tenes que ser cliente de la empresa para poder ser usuario. Verifica si tu cuit es correcto",
+    "14": "Error al cambiar la contraseña",
+    "15": "Error al enviar contraseña",
+    "100": "Error al obtener los datos de la cuenta. Por favor intente nuevamente",
+    "101": "El usuario no es valido",
+    "102": "Error al obtener los datos de la cuenta. Por favor intente nuevamente",
+    "103": "No tienen permisos para realizar esta consulta",
+    "201": "La operación para este usuario no esta permitida",
+    "202": "Ocurrio un error al obtener los movimientos de granos",
+    "203": "Los datos del usuario no son validos",
+    "301": "Error al obtener los datos de los tickets",
+    "401": "La operación para este usuario no esta permitida",
+    "402": "Error al obtener los datos. Por favor intente nuevamente",
+    "403": "Error al obtener los datos del usuario. Por favor intente nuevamente"
+  }
+}

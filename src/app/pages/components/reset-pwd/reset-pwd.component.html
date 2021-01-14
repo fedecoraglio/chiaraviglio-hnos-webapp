@@ -1,0 +1,108 @@
+<toaster-container [toasterconfig]="config"></toaster-container>
+<nb-card>
+  <nb-card-header>
+    <h5 class="title">{{'user.titleResetPwd' | translate}}</h5>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="row">
+      <div class="col-12">
+        <form (ngSubmit)="resetPwd()" #resetPwdForm="ngForm">
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <div class="form-group">
+                <label for="password">{{'user.currentPassword' | translate}}</label>
+                <input name="password"
+                        [(ngModel)]="user.password"
+                        type="password"
+                        id="password"
+                        class="form-control form-control-lg first"
+                        placeholder="{{'user.currentPassword' | translate}}"
+                        #password="ngModel"
+                        [class.form-control-danger]="password.invalid && password.touched"
+                        [required]="true"
+                        required
+                        maxlength="200"
+                        autofocus>
+                <small class="form-text error" *ngIf="password.invalid && password.touched && password.errors?.required">
+                  {{'auth.register.errors.repeatPasswordRequired' | translate}}
+                </small>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <div class="form-group">
+                <label for="newPassword">{{'user.newPassword' | translate}}</label>
+                <input name="newPassword"
+                        [(ngModel)]="user.newPassword"
+                        type="password"
+                        id="newPassword"
+                        class="form-control form-control-lg first"
+                        placeholder="{{'user.newPassword' | translate}}"
+                        #newPassword="ngModel"
+                        [class.form-control-danger]="newPassword.invalid && newPassword.touched"
+                        [required]="true"
+                        required [minlength]="8"
+                        [maxlength]="200"
+                        maxlength="200"
+                        pattern="(?=.*\d)(?=.*[a-zA-Z]).{8,}" 
+                        autofocus>
+                <small class="form-text error" *ngIf="newPassword.invalid && newPassword.touched && newPassword.errors?.required">
+                  {{'auth.register.errors.repeatPasswordRequired' | translate}}
+                </small>
+                <small class="form-text error"
+                        *ngIf="newPassword.invalid && newPassword.touched && (newPassword.errors?.minlength || newPassword.errors?.maxlength)">
+                  {{'auth.register.errors.repeatPasswordMinlength' | translate}}
+                </small>
+                <small class="form-text error" *ngIf="newPassword.invalid && newPassword.touched && newPassword.errors?.pattern">
+                  {{'auth.register.errors.repeatPasswordInvalid' | translate}}
+                </small>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="form-group">
+                <label for="confirmPassword">{{'user.repeatNewPassword' | translate}}</label>
+                <input name="confirmPassword"
+                        id="confirmPassword"
+                        [(ngModel)]="user.confirmPassword"
+                        type="password"
+                        class="form-control"
+                        placeholder="{{'user.repeatNewPassword' | translate}}"
+                        #confirmPassword="ngModel"
+                        [class.form-control-danger]="confirmPassword.invalid && confirmPassword.touched"
+                        [required]="true"
+                        [minlength]="8"
+                        [maxlength]="200"
+                        maxlength="200"
+                        pattern="(?=.*\d)(?=.*[a-zA-Z]).{8,}">
+                <small class="form-text error" *ngIf="confirmPassword.invalid && confirmPassword.touched && confirmPassword.errors?.required">
+                  {{'auth.register.errors.repeatPasswordRequired' | translate}}
+                </small>
+                <small class="form-text error"
+                        *ngIf="confirmPassword.invalid && confirmPassword.touched && (confirmPassword.errors?.minlength || confirmPassword.errors?.maxlength)">
+                  {{'auth.register.errors.repeatPasswordMinlength' | translate}}
+                </small>
+                <small class="form-text error"
+                        *ngIf="confirmPassword.touched && newPassword.value != confirmPassword.value && !confirmPassword.errors?.required">
+                  {{'auth.register.errors.passwordsAreNotEquals' | translate}}
+                </small>
+                <small class="form-text error" *ngIf="confirmPassword.invalid && confirmPassword.touched && confirmPassword.errors?.pattern">
+                  {{'auth.register.errors.repeatPasswordInvalid' | translate}}
+                </small>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <button [disabled]="submitted || !resetPwdForm.form.valid"
+                      class="btn btn-success btn-block"
+                      [class.btn-pulse]="submitted">
+                Cambiar Contraseña
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>

@@ -1,0 +1,85 @@
+<toaster-container [toasterconfig]="config"></toaster-container>
+<div class="row">
+  <div class="col-12">
+    <nb-card>
+      <nb-card-header>
+        <h5>{{'user.titleUpdate' | translate}}</h5>
+      </nb-card-header>
+      <nb-card-body>      
+        <div class="row">
+          <div class="col-12">
+            <form (ngSubmit)="updateUser()" #form="ngForm" class="w-100">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="name">{{'auth.register.form.name' | translate}}*</label>
+                    <input name="name"
+                          id="name" 
+                          [(ngModel)]="user.name"
+                          #name="ngModel"
+                          type="text"
+                          class="form-control"
+                          placeholder="{{'auth.register.form.name' | translate}}"
+                          [class.form-control-danger]="name.invalid && name.touched"
+                          [required]="true"
+                          [minlength]="2"
+                          [maxlength]="200"
+                          maxlength="200" autofocus>
+                      <small class="form-text error" 
+                            *ngIf="name.invalid && name.touched && name.errors?.required">
+                        {{'auth.register.errors.nameRequired' | translate}}
+                      </small>
+                      <small class="form-text error"
+                            *ngIf="name.invalid && name.touched && (name.errors?.minlength || name.errors?.maxlength)">
+                        {{'auth.register.errors.nameMinlength' | translate}}
+                      </small>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="idNumber">{{'auth.register.form.idNumber' | translate}}*</label>
+                    <input name="idNumber"
+                            id="idNumber" 
+                            [(ngModel)]="user.idNumber"
+                            #idNumber="ngModel"
+                            [disabled]="true"
+                            type="number"
+                            class="form-control"
+                            placeholder="{{'auth.register.form.idNumber' | translate}}">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="email">{{'auth.register.form.email' | translate}}*</label>
+                    <input name="email"
+                          id="email"
+                          [(ngModel)]="user.email"
+                          [disabled]="true"
+                          #email="ngModel"
+                          type="email"
+                          class="form-control"
+                          placeholder="{{'auth.register.form.email' | translate}}">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <button [disabled]="submitted || !form.valid"
+                            class="btn btn-block btn-success"
+                            [class.btn-pulse]="submitted"
+                            type="submit">
+                      {{'user.btnUpdate' | translate}}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

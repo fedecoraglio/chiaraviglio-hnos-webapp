@@ -1,0 +1,36 @@
+<toaster-container [toasterconfig]="config"></toaster-container>
+<nb-card>
+  <nb-card-header>
+    <h2 class="title">{{'user.requestPasswordTitle' | translate}}</h2>
+  </nb-card-header>
+  <nb-card-body>
+    <small class="form-text sub-title">{{'user.requestPasswordSubtitle' | translate}}</small>
+
+    <form (ngSubmit)="requestPassword()" #requestPassForm="ngForm">
+
+      <div class="form-group">
+        <label for="email">{{'user.requestPasswordEmailField' | translate}}</label>
+        <input name="email"
+               [(ngModel)]="user.email"
+               id="email"
+               #email="ngModel"
+               class="form-control"
+               placeholder="{{'user.requestPasswordEmailField' | translate}}"
+               pattern=".+@.+\..+"
+               [class.form-control-danger]="email.invalid && email.touched"
+               [required]="true"
+               autofocus>
+        <small class="form-text error" *ngIf="email.invalid && email.touched && email.errors?.required">
+          {{'user.emailRequired' | translate}}
+        </small>
+        <small class="form-text error" *ngIf="email.invalid && email.touched && email.errors?.pattern">
+          {{'user.emailInvalid' | translate}}
+        </small>
+      </div>
+
+      <button [disabled]="submitted || !requestPassForm.valid" class="btn btn-success btn-block">
+        {{'user.requestPasswordButtonText' | translate}}
+      </button>
+    </form>
+  </nb-card-body>
+</nb-card>

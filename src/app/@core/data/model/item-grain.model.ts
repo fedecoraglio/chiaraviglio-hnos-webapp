@@ -1,0 +1,16 @@
+export interface IItemGrainModel {
+  id: string,
+  accountNumber: string,
+  idNumber: string,
+  cliName: string,
+  code: string,
+  cose: string,
+  amountIn: string,
+  amountOut: string,
+  stock: string,
+  grano: string,
+  domici: string,
+  city: string,
+  zipCode: string,
+  state: string,
+}

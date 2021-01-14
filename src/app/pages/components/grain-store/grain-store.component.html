@@ -1,0 +1,108 @@
+<toaster-container [toasterconfig]="config"></toaster-container>
+<div class="row">
+  <div class="col-12">
+    <nb-card>
+      <nb-card-header><h5>Movimientos de Acopios de Granos</h5></nb-card-header>
+      <nb-card-body>
+        <div class="row row-item">
+          <div class="col-12">
+            <nb-card>
+              <nb-card-body>
+                <form class="form-inline">
+                  <div class="form-group form-group-container" style="padding-right: 1rem;">
+                    <input type="text"
+                            class="form-control"
+                            placeholder="Buscar por tipo"
+                            id="searchByCode"
+                            name="searchByCode"
+                          [(ngModel)]="searchByCode">
+                  </div>
+                  <div class="form-group form-group-conteiner" style="padding-right: 1rem;">
+                    <input type="text"
+                            class="form-control"
+                            placeholder="Buscar por cosecha"
+                            id="searchByCose"
+                            name="searchByCose"
+                            [(ngModel)]="searchByCose">
+                  </div>
+                  <button type="submit"
+                          class="btn btn-success"
+                          [disabled]="submitted"
+                          (click)="searchGrainStore()">Buscar
+                  </button>
+                </form>
+              </nb-card-body>
+            </nb-card>            
+          </div>
+        </div>
+        <div class="row row-item">
+          <div class="col-12">
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered">
+                <thead class="table-thead">
+                  <tr>
+                    <th scope="col">Cuenta</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Descarga</th>
+                    <th scope="col">Carga</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Cosecha</th>
+                    <th scope="col">Peso</th>
+                    <th scope="col">Chofer</th>
+                    <th scope="col">Destino</th>
+                    <th scope="col">Contrato</th>
+                    <th scope="col">KMs</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let gst of grainStoreData?.items">
+                    <td scope="row">{{gst.accountNumber}}</td>
+                    <td scope="row">{{gst.date | date: 'dd/MM/yyyy'}}</td>
+                    <td scope="row">{{gst.dateDesc | date: 'dd/MM/yyyy'}}</td>
+                    <td scope="row">{{gst.dateCarga | date: 'dd/MM/yyyy'}}</td>
+                    <td scope="row">{{gst.code}}</td>
+                    <td scope="row">{{gst.cose}}</td>
+                    <td scope="row">{{gst.peso | number:'2.2-4'}}</td>
+                    <td scope="row">{{gst.nomchof | ngxCapitalize}}</td>
+                    <td scope="row">{{gst.nomdesti | ngxCapitalize}}</td>
+                    <td scope="row">{{gst.contrat}}</td>
+                    <td scope="row">{{gst.km | number:'2.2-4'}}</td>
+                  </tr>
+                  <tr *ngIf="grainStoreData?.items?.length === 0 && !submitted">
+                      <td scope="row" colspan="11">
+                          <div class="container-pagination">
+                            No hay movimientos de acopios de granos
+                          </div>
+                      </td>
+                  </tr>
+                  <tr *ngIf="grainStoreData?.items.length < grainStoreData?.total && !submitted">
+                    <td scope="row" colspan="11">
+                      <div class="col-12">
+                        <div class="container-pagination">
+                          <button type="button"
+                                  (click)="showMoreData()"
+                                  class="btn btn-outline-success btn-block btn-tn">
+                            Mostrar más movimientos de granos
+                          </button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="row row-item" *ngIf="grainStoreData?.items.length > 0">
+          <div class="col-12">
+            <button type="button"
+                    id="downloadAll"
+                    name="downloadAll"
+                    class="btn btn-primary btn-tn"
+                    (click)="downloadExcelFile()">Descargar todos los movimientos</button>
+          </div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
